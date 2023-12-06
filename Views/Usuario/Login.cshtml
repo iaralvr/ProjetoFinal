@@ -1,0 +1,46 @@
+﻿@model LoginProjeto.Models.Usuario
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="caixa">
+
+    <div class="row">
+        <h4>Login</h4>
+        <p>Digite o seu email e a senha para realizar o login.</p>
+        <hr />
+        <div class="col-md-12">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UsuarioEmail" class="control-label"></label>
+                    <input asp-for="UsuarioEmail" class="form-control" />
+                    <span asp-validation-for="UsuarioEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UsuarioSenha" class="control-label"></label>
+                    <input asp-for="UsuarioSenha" type="password" class="form-control" />
+                    <span asp-validation-for="UsuarioSenha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Entrar" class="btn btn-primary" />
+                </div>
+                <br />
+                <h3>@ViewBag.Mensagem</h3>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
